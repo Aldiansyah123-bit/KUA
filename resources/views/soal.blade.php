@@ -69,20 +69,22 @@
     <!-- Inside this JavaScript file I've inserted Questions and Options only -->
 
     <script>
-        @foreach ($ujian as $item)
+        @if (count($ujian) > 0)
+        @foreach ($ujian as $index=>$item)
         var questions = [
             {
                 numb: "{{$loop->iteration}}",
-                question: "{{$item->soal}}",
-                answer: "{{$item->kunci_jawaban}}",
+                question: "{{$item['soal']}}",
+                answer: "{{$item['kunci_jawaban']}}",
                 options: [
-                            "{{$item->a}}",
-                            "{{$item->b}}",
-                            "{{$item->c}}",
-                            "{{$item->d}}"
+                            "{{$item['a']}}",
+                            "{{$item['b']}}",
+                            "{{$item['c']}}",
+                            "{{$item['d']}}"
                         ]
         }];
         @endforeach
+         @endif
     </script>
 
     <script src="js/script.js"></script>
